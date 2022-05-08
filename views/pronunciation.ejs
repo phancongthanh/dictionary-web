@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Edit speech</title>
+    <title>Edit pronunciation</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <link rel='stylesheet' href='/stylesheets/speech.css'/>
-    <script src="/javascripts/speech.js"></script>
+    <link rel='stylesheet' href='/stylesheets/pronunciation.css'/>
+    <script src="/javascripts/pronunciation.js"></script>
   </head>
   <body>
     <header>Header</header>
     <main class="speech-main container">
       <div class="content">
         <div class="word-target"><%= target%></div>
-        <input type="text" id="speechInput" value="<%= speech%>"></input>
+        <input type="text" id="speechInput" value="<%= pronunciation%>"></input>
         <div class="grid-container">
           <div style="grid-column: 7/9;grid-row: 2/3/3; font-size: 14px;" onclick="deleteLetter_click">Backspace</div>
           <div style="grid-column: 1/2;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click">iː</div>

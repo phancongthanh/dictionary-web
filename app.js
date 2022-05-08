@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
+// router
+var indexRouter = require('./routes/index.route');
+var wordRouter = require('./routes/word.route');
+var pronunciationRouter = require('./routes/pronunciation.route');
 
 var app = express();
 
@@ -18,6 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// router setup
+app.use('/word', wordRouter);
+app.use('/pronunciation', pronunciationRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
