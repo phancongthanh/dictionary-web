@@ -13,24 +13,24 @@ exports.getPronunciationView = async (req, res, next) => {
         // Lấy spelling đã có từ models
         const spelling = await pronunciation.getPronunciation(target)
         // Tạo trang edit pronunciation gửi cho Client
-        res.render('pronunciation', {target, pronunciation: spelling});
+        res.render('pronunciation', {target, pronunciation: spelling || ""});
     }
 }
 
 /*
     Api Controller Sửa phát âm
     Input:  target và pronunciation mới chứa trong thân request(req.body)
-    Output: Sửa phát âm trong database và điều hướng về view
+    Output: Sửa phát âm trong database
 */
 exports.putPronunciation = async (req, res, next) => {
     // Lấy dữ liệu từ request
     const target = req.body.target;
-    const spelling = req.body.pronunciation;
-    // Nếu có dữ liệu thì xử lý, ngược lại lỗi 404
-    if (target && spelling) {
+    // Nếu có dữ liệu thì xử lý, ngược lại lỗi 400
+    if (target) {
+        const spelling = req.body.pronunciation;
         // Gọi models đặt lại pronunciation
-        await pronunciation.setPronunciation(target, spelling);
+        await pronunciation.setPronunciation(target, spelling || "");
         // Điều hướng về view
-        res.redirect('/word/view?target=' + target);
-    }
+        res.sendStatus(200);
+    } else res.sendStatus(400);
 }
