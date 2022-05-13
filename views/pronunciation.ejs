@@ -8,62 +8,62 @@
   </head>
   <body>
     <header>Header</header>
-    <main class="speech-main container">
+    <main class="bg-gray container">
+      <div class="word-target" id="target"><%= target%></div>
+      <input type="text" id="pronInput" value="<%= pronunciation%>"></input>
       <div class="content">
-        <div class="word-target"><%= target%></div>
-        <input type="text" id="speechInput" value="<%= pronunciation%>"></input>
         <div class="grid-container">
-          <div style="grid-column: 7/9;grid-row: 2/3/3; font-size: 14px;" onclick="deleteLetter_click">Backspace</div>
-          <div style="grid-column: 1/2;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click">iː</div>
-          <div style="grid-column: 2/3;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click">ɪ</div>
-          <div style="grid-column: 3/4;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click">ʊ</div>
-          <div style="grid-column: 4/5;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click">uː</div>
-          <div style="grid-column: 5/6;grid-row: 1/2" class="vowel-di" onclick="addLetter_click">ɪə</div>
-          <div style="grid-column: 6/7;grid-row: 1/2" class="vowel-di" onclick="addLetter_click">eɪ</div>
-          <div style="grid-column: 1/2;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click">e</div>
-          <div style="grid-column: 2/3;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click">ə</div>
-          <div style="grid-column: 3/4;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click">ɜː</div>
-          <div style="grid-column: 4/5;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click">ɔː</div>
-          <div style="grid-column: 5/6;grid-row: 2/3" class="vowel-di" onclick="addLetter_click">ʊə</div>
-          <div style="grid-column: 6/7;grid-row: 2/3" class="vowel-di" onclick="addLetter_click">ɔɪ</div>
-          <div style="grid-column: 7/8;grid-row: 2/3" class="vowel-di" onclick="addLetter_click">əʊ</div>
-          <div style="grid-column: 8/9;grid-row: 2/3" onclick="addLetter_click">ˈ</div>
-          <div style="grid-column: 1/2;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click">æ</div>
-          <div style="grid-column: 2/3;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click">ʌ</div>
-          <div style="grid-column: 3/4;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click">ɑː</div>
-          <div style="grid-column: 4/5;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click">ɒ</div>
-          <div style="grid-column: 5/6;grid-row: 3/4" class="vowel-di" onclick="addLetter_click">eə</div>
-          <div style="grid-column: 6/7;grid-row: 3/4" class="vowel-di" onclick="addLetter_click">aɪ</div>
-          <div style="grid-column: 7/8;grid-row: 3/4" class="vowel-di" onclick="addLetter_click">aʊ</div>
-          <div style="grid-column: 8/9;grid-row: 3/4" onclick="addLetter_click">ˌ</div>
-          <div style="grid-column: 1/2;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click">p</div>
-          <div style="grid-column: 2/3;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click">b</div>
-          <div style="grid-column: 3/4;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click">t</div>
-          <div style="grid-column: 4/5;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click">d</div>
-          <div style="grid-column: 5/6;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click">ʧ</div>
-          <div style="grid-column: 6/7;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click">ʤ</div>
-          <div style="grid-column: 7/8;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click">k</div>
-          <div style="grid-column: 8/9;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click">g</div>
-          <div style="grid-column: 1/2;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click">f</div>
-          <div style="grid-column: 2/3;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click">v</div>
-          <div style="grid-column: 3/4;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click">θ</div>
-          <div style="grid-column: 4/5;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click">ð</div>
-          <div style="grid-column: 5/6;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click">s</div>
-          <div style="grid-column: 6/7;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click">z</div>
-          <div style="grid-column: 7/8;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click">ʃ</div>
-          <div style="grid-column: 8/9;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click">ʒ</div>
-          <div style="grid-column: 1/2;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">m</div>
-          <div style="grid-column: 2/3;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">n</div>
-          <div style="grid-column: 3/4;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">ŋ</div>
-          <div style="grid-column: 4/5;grid-row: 6/7" class="consonant-unvoiced" onclick="addLetter_click">h</div>
-          <div style="grid-column: 5/6;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">l</div>
-          <div style="grid-column: 6/7;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">r</div>
-          <div style="grid-column: 7/8;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">w</div>
-          <div style="grid-column: 8/9;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click">j</div>
+          <div style="grid-column: 7/9;grid-row: 2/3/3; font-size: 14px;" onclick="deleteLetter_click()">Backspace</div>
+          <div style="grid-column: 1/2;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click(this)">iː</div>
+          <div style="grid-column: 2/3;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click(this)">ɪ</div>
+          <div style="grid-column: 3/4;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click(this)">ʊ</div>
+          <div style="grid-column: 4/5;grid-row: 1/2" class="vowel-mono" onclick="addLetter_click(this)">uː</div>
+          <div style="grid-column: 5/6;grid-row: 1/2" class="vowel-di" onclick="addLetter_click(this)">ɪə</div>
+          <div style="grid-column: 6/7;grid-row: 1/2" class="vowel-di" onclick="addLetter_click(this)">eɪ</div>
+          <div style="grid-column: 1/2;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click(this)">e</div>
+          <div style="grid-column: 2/3;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click(this)">ə</div>
+          <div style="grid-column: 3/4;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click(this)">ɜː</div>
+          <div style="grid-column: 4/5;grid-row: 2/3" class="vowel-mono" onclick="addLetter_click(this)">ɔː</div>
+          <div style="grid-column: 5/6;grid-row: 2/3" class="vowel-di" onclick="addLetter_click(this)">ʊə</div>
+          <div style="grid-column: 6/7;grid-row: 2/3" class="vowel-di" onclick="addLetter_click(this)">ɔɪ</div>
+          <div style="grid-column: 7/8;grid-row: 2/3" class="vowel-di" onclick="addLetter_click(this)">əʊ</div>
+          <div style="grid-column: 8/9;grid-row: 2/3" onclick="addLetter_click(this)">ˈ</div>
+          <div style="grid-column: 1/2;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click(this)">æ</div>
+          <div style="grid-column: 2/3;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click(this)">ʌ</div>
+          <div style="grid-column: 3/4;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click(this)">ɑː</div>
+          <div style="grid-column: 4/5;grid-row: 3/4" class="vowel-mono" onclick="addLetter_click(this)">ɒ</div>
+          <div style="grid-column: 5/6;grid-row: 3/4" class="vowel-di" onclick="addLetter_click(this)">eə</div>
+          <div style="grid-column: 6/7;grid-row: 3/4" class="vowel-di" onclick="addLetter_click(this)">aɪ</div>
+          <div style="grid-column: 7/8;grid-row: 3/4" class="vowel-di" onclick="addLetter_click(this)">aʊ</div>
+          <div style="grid-column: 8/9;grid-row: 3/4" onclick="addLetter_click(this)">ˌ</div>
+          <div style="grid-column: 1/2;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click(this)">p</div>
+          <div style="grid-column: 2/3;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click(this)">b</div>
+          <div style="grid-column: 3/4;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click(this)">t</div>
+          <div style="grid-column: 4/5;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click(this)">d</div>
+          <div style="grid-column: 5/6;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click(this)">ʧ</div>
+          <div style="grid-column: 6/7;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click(this)">ʤ</div>
+          <div style="grid-column: 7/8;grid-row: 4/5" class="consonant-unvoiced" onclick="addLetter_click(this)">k</div>
+          <div style="grid-column: 8/9;grid-row: 4/5" class="consonant-voiced" onclick="addLetter_click(this)">g</div>
+          <div style="grid-column: 1/2;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click(this)">f</div>
+          <div style="grid-column: 2/3;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click(this)">v</div>
+          <div style="grid-column: 3/4;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click(this)">θ</div>
+          <div style="grid-column: 4/5;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click(this)">ð</div>
+          <div style="grid-column: 5/6;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click(this)">s</div>
+          <div style="grid-column: 6/7;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click(this)">z</div>
+          <div style="grid-column: 7/8;grid-row: 5/6" class="consonant-unvoiced" onclick="addLetter_click(this)">ʃ</div>
+          <div style="grid-column: 8/9;grid-row: 5/6" class="consonant-voiced" onclick="addLetter_click(this)">ʒ</div>
+          <div style="grid-column: 1/2;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">m</div>
+          <div style="grid-column: 2/3;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">n</div>
+          <div style="grid-column: 3/4;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">ŋ</div>
+          <div style="grid-column: 4/5;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">h</div>
+          <div style="grid-column: 5/6;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">l</div>
+          <div style="grid-column: 6/7;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">r</div>
+          <div style="grid-column: 7/8;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">w</div>
+          <div style="grid-column: 8/9;grid-row: 6/7" class="consonant-voiced" onclick="addLetter_click(this)">j</div>
         </div>
         <div class="btns-container">
-          <div onclick="saveClick">Save</div>
-          <div onclick="deleteClick">Delete</div>
+          <div onclick="saveClick()">Save</div>
+          <div onclick="deleteClick()">Delete</div>
         </div>
       </div>
     </main>
