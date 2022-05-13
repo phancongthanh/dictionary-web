@@ -6,6 +6,7 @@ var logger = require('morgan');
 // router
 var indexRouter = require('./routes/index.route');
 var wordRouter = require('./routes/word.route');
+var meaningRouter = require('./routes/meaning.route');
 var pronunciationRouter = require('./routes/pronunciation.route');
 
 var app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // router setup
 app.use('/word', wordRouter);
+app.use('/meaning', meaningRouter);
 app.use('/pronunciation', pronunciationRouter);
 app.use('/', indexRouter);
 

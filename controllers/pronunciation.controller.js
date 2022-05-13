@@ -1,20 +1,36 @@
 var pronunciation = require('../models/pronunciation');
 
-/*Hiển thị sửa phát âm*/
+/*
+    Controller Hiển thị sửa phát âm
+    Input:  target chứa trong chuỗi truy vấn(req.query)
+    Output: Trả về cho res trang view
+*/
 exports.getPronunciationView = async (req, res, next) => {
+    // Lấy target từ query
     const target = req.query.target;
+    // Nếu có target từ xử lý, ngược lại để lỗi 404
     if (target) {
+        // Lấy spelling đã có từ models
         const spelling = await pronunciation.getPronunciation(target)
-        if (spelling) res.render('pronunciation', {target, pronunciation: spelling});
+        // Tạo trang edit pronunciation gửi cho Client
+        res.render('pronunciation', {target, pronunciation: spelling});
     }
 }
 
-/*Sử phát âm*/
+/*
+    Api Controller Sửa phát âm
+    Input:  target và pronunciation mới chứa trong thân request(req.body)
+    Output: Sửa phát âm trong database và điều hướng về view
+*/
 exports.putPronunciation = async (req, res, next) => {
+    // Lấy dữ liệu từ request
     const target = req.body.target;
     const spelling = req.body.pronunciation;
+    // Nếu có dữ liệu thì xử lý, ngược lại lỗi 404
     if (target && spelling) {
+        // Gọi models đặt lại pronunciation
         await pronunciation.setPronunciation(target, spelling);
-        res.redirect('/view?target=' + target);
+        // Điều hướng về view
+        res.redirect('/word/view?target=' + target);
     }
 }
