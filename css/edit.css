@@ -1,0 +1,443 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+}
+
+.container {
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0px;
+
+}
+
+:root {
+    --green: #54B192;
+    --gray: #3F3D56;
+    --pink: rgb(218, 141, 201);
+    --blue: rgb(153, 217, 234);
+    --smooth: all.3s ease-in;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    background-image: linear-gradient(-200deg, #cf2ec4 0%, #33417d 100%);
+}
+
+/* logo  */
+.navbar-logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* menu  */
+.navbar-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-color: var(--blue);
+    z-index: 5;
+    transition: var(--smooth);
+    transform: translateX(-100%);
+    opacity: 0;
+
+}
+
+.navbar-links.navbar-open {
+    transform: translateX(0);
+    opacity: 1;
+    transition: var(--smooth);
+}
+
+.navbar-link {
+    list-style: none;
+    margin: 40px;
+
+}
+
+.navbar-link a {
+    text-decoration: none;
+    color: #3F3D56;
+    font-weight: 300;
+    transition: var(--smooth);
+}
+
+.navbar-link a:hover {
+    color: var(--pink);
+    transition: var(--smooth);
+}
+
+/* menu button  */
+.navbar-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: var(--smooth);
+    z-index: 7;
+}
+
+.navbar-icon {
+    width: 40px;
+    height: 6px;
+    background-color: violet;
+    border-radius: 10px;
+    transition: var(--smooth);
+    position: relative;
+}
+
+.navbar-icon:before,
+.navbar-icon:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background-color: violet;
+    border-radius: 10px;
+    transition: var(--smooth);
+}
+
+.navbar-icon:before {
+    transform: translateY(-10px);
+}
+
+.navbar-icon::after {
+    transform: translateY(10px);
+}
+
+/* button animation  */
+.open .navbar-icon {
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+.open .navbar-icon:before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+.open .navbar-icon:after {
+    transform: rotate(-45deg) translate(35px, 35px);
+    ;
+}
+
+@media (min-width:62em) {
+    .navbar-links {
+        position: initial;
+        transform: translateX(0);
+        opacity: 1;
+        background-color: transparent;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+    }
+
+    .navbar-link a {
+        text-decoration: none;
+        color: var(--blue);
+        font-weight: 450;
+        transition: var(--smooth);
+    }
+
+    .navbar-link a:hover {
+        color: var(--pink);
+        transition: var(--smooth);
+    }
+
+    .navbar-icons {
+        display: none;
+    }
+}
+
+button {
+    text-align: center;
+    color: #fff;
+    background-color: #3F3D56;
+    padding: .8rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: var(--smooth);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: var(--blue);
+    color: var(--pink);
+    transition: var(--smooth);
+}
+
+input {
+    text-align: center;
+    color: #3F3D56;
+    background-color: #fff;
+    padding: 1rem 6rem;
+    border-color: var(--blue);
+    border-radius: 100px;
+    transition: var(--smooth);
+    font-weight: 300;
+    font-size: large;
+}
+
+input:hover {
+    border-color: var(--pink);
+}
+
+/* input  */
+#body {
+
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 75vh;
+    background-image: url("https://cutewallpaper.org/21/nice-background-hd/Nice-Background-Images-wallpaper-collections-at-graciaviva.cat.png");
+    background-attachment: fixed;
+    background-size: cover;
+    object-fit: cover;
+    /* background-color: aqua; */
+
+}
+
+.input {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    text-align: center;
+}
+
+
+/* drop box */
+.dropbox {
+    /* position: relative; */
+    /* top: 50px; */
+    background-color: #FFF;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    /* padding: 10px 8px; */
+    border-radius: 10px;
+    /* opacity: 0; */
+    /* pointer-events: none; */
+    max-height: 250px;
+    /* z-index: 7; */
+    /* overflow-y: auto; */
+    z-index: 100;
+
+}
+
+.dropbox li {
+    position: relative;
+    list-style: none;
+    /* padding: ; */
+    width: 100%;
+    cursor: default;
+    border-radius: 10px;
+    padding: 7px;
+    display: none;
+}
+
+.active .dropbox {
+    /* padding: 10px 8px; */
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+.active .dropbox li {
+    display: block;
+    padding: 7px;
+}
+
+.dropbox li:hover {
+    background-color: #3F3D56;
+    color: #FFF;
+    transition: var(--smooth);
+}
+
+
+.Add-btn {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    text-align: center;
+
+}
+
+.body-inputs {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+
+#cover {
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.text-center {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: flex;
+    text-align: center;
+}
+
+.container1 {
+    width: 35%;
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    background-color: #734ae8;
+    background-image: linear-gradient(315deg, #734ae8 0%, #89d4cf 74%);
+    border-radius: 5px;
+    padding: 70px 100px;
+    margin: 70px 0px;
+    object-fit: cover;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-container label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 16px;
+    color: black;
+
+    transition: all 0.25s ease-in-out;
+
+}
+
+.input-container input {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 0;
+    text-align: left;
+}
+
+.input-container input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
+.input-container textarea {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 0;
+    overflow: hidden;
+    resize: none;
+}
+
+.input-container textarea:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
+.btn {
+    color: #fff;
+    background-color: #e74c3c;
+    outline: none;
+    border: 0;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin-top: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.input-container input:focus~label,
+.input-container input:valid~label {
+    top: -12px;
+    font-size: 12px;
+
+}
+
+.input-container textarea:focus~label,
+.input-container textarea:valid~label {
+    top: -12px;
+    font-size: 12px;
+
+}
+
+.word-type {
+
+    padding: 8px 0 25px 0px;
+    color: black;
+
+}
+
+.word-type select {
+
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    padding-top: 13px;
+    font-size: 16px;
+    color: white;
+    border-bottom: 1px solid #555;
+    width: 100%;
+
+    margin-bottom: 1px;
+}
+
+option {
+    background-color: #54B192;
+}
