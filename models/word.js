@@ -54,13 +54,13 @@ async function getMeaning(target) {
             target,
             meaning: 'test1',
             format: 'Danh từ',
-            example: 'abcd'
+            synonyms: 'abcd'
         },
         {
             target,
             meaning: 'test2',
             format: 'Danh từ',
-            example: 'abcd'
+            synonyms: 'abcd'
         }
     ]
     /*
