@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // router
-var indexRouter = require('./routes/index.route');
-var wordRouter = require('./routes/word.route');
-var meaningRouter = require('./routes/meaning.route');
+var wordViewRouter = require('./routes/word.route');
+var wordAPIRouter = require('./routes/api.word.route');
 var pronunciationRouter = require('./routes/pronunciation.route');
 
 var app = express();
@@ -22,10 +21,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // router setup
-app.use('/word', wordRouter);
-app.use('/meaning', meaningRouter);
+app.use('/', wordViewRouter);
+app.use('/word', wordAPIRouter);
 app.use('/pronunciation', pronunciationRouter);
-app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

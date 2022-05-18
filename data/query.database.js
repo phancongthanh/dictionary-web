@@ -26,13 +26,9 @@ connection.query(selectDatabase, function(err, result) {
   if (err) throw err;
 })
 
-const createWordTable = "CREATE TABLE IF NOT EXISTS word(target VARCHAR(20) NOT NULL, meaning VARCHAR(50) NOT NULL, format VARCHAR(10), synonyms VARCHAR(200), PRIMARY KEY(target, meaning));";
-const createPronunciationTable = "CREATE TABLE IF NOT EXISTS pronunciation(target VARCHAR(20) NOT NULL PRIMARY KEY, spelling VARCHAR(20) NOT NULL);";
+const createWordTable = "CREATE TABLE IF NOT EXISTS word(target VARCHAR(20) NOT NULL, vnMeaning VARCHAR(200), enMeaning VARCHAR(200), format VARCHAR(20), synonyms VARCHAR(200), example VARCHAR(200));"
 
 connection.query(createWordTable, function(err, result) {
-  if (err) throw err;
-})
-connection.query(createPronunciationTable, function(err, result) {
   if (err) throw err;
 })
 

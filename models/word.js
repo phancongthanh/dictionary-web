@@ -1,32 +1,3 @@
-/*
-    SCHEMA be like:
-    structure:
-    {
-        target: String,
-        meaning: String,
-        format: String,
-        synonyms: String,
-        primary key(target, meaning)
-    }
-
-    //Example instance:
-    words = [
-        {
-            target: "dictionary",
-            meaning: "Từ điển",
-            format: "Danh từ",
-            synonyms: ""
-        },
-        {
-            target: "word",
-            meaning: "Từ",
-            format: "Danh từ",
-            synonyms: ""
-        },
-        ...
-    ]
-
-*/
 var query = require('../data/query.database');
 
 /**
@@ -44,25 +15,19 @@ async function searchTarget(key) {
 }
 
 /**
- * Lấy mảng meaning có target
+ * Lấy word có target
  * @param string target : nghĩa tiếng anh của từ cần lấy
- * @returns : Mảng các meaning có cùng target
+ * @returns : word từ cần lấy
  */
-async function getMeaning(target) {
-    return [
-        {
-            target,
-            meaning: 'test1',
-            format: 'Danh từ',
-            synonyms: 'abcd'
-        },
-        {
-            target,
-            meaning: 'test2',
-            format: 'Danh từ',
-            synonyms: 'abcd'
-        }
-    ]
+async function getWord(target) {
+    return {
+        target,
+        vnMeaning: "Test1",
+        enMeaning: "Test2",
+        format: "noun",
+        synonyms: "Test4",
+        example: "Test5"
+    }
     /*
         Chưa xong,
         Truy vấn query lấy danh sách nghĩa của từ
@@ -70,24 +35,15 @@ async function getMeaning(target) {
 }
 
 /**
- * Thêm từ(meaning) và database
- * @param {target, meaning, format, synonyms} meaning : Từ cần thêm
+ * Thêm từ và database
+ * @param word : Từ cần thêm
  */
-async function addMeaning(meaning) {
+async function addWord(word) {
     /* Chưa code */
 }
 
 /**
- * Xóa 1 meaning
- * @param string target : Nghĩa tiếng của từ cần xóa
- * @param string meaning : Nghĩa tiếng việt của từ cần xóa
- */
-async function deleteMeaning(target, meaning) {
-    /* Chưa code */
-}
-
-/**
- * Xóa từ(toàn bộ meaning của từ)
+ * Xóa từ
  * @param string target : Nghĩa tiếng anh của từ
  */
 async function deleteWord(target) {
@@ -96,8 +52,7 @@ async function deleteWord(target) {
 
 module.exports = {
     searchTarget,
-    getMeaning,
-    addMeaning,
-    deleteMeaning,
+    getWord,
+    addWord,
     deleteWord
 }
