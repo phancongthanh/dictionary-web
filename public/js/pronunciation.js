@@ -7,7 +7,7 @@ async function putSpeech(target, pronunciation) {
         },
         body: JSON.stringify({target, pronunciation})
     })
-    location.assign('/word/view?target='+target);
+    location.assign('/view');
 }
 
 function addLetter_click(element) {
