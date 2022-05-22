@@ -20,7 +20,7 @@ exports.getWord = async (req, res, next) => {
     // Lấy target từ chuỗi truy vấn
     const target = req.query.target;
     // Lấy dự liệu của từ từ models
-    const word = await words.getMeaning(target);
+    const word = await words.getWord(target);
     // Nếu tồn tại dự liệu của từ thì hiển thị, ngược lại 404
     if (word) res.json(word);
 }
