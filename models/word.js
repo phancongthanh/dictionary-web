@@ -9,7 +9,7 @@ var query = require('../data/query.database');
 async function searchTarget(key) {
     try {
         const result = await query("SELECT DISTINCT target FROM word WHERE target LIKE '%" + key + "%';");
-        return result || [];
+        return (result || []).map(x => x.target);
     } catch(err) {
         throw err;
     }
