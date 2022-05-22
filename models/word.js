@@ -32,7 +32,7 @@ async function getWord(target) {
 async function addWord(word) {
     /* Chưa code */
     try {
-        const result = query("INSERT INTO dictionary.word (target, pronunciation, vnMeaning, enMeaning, format, synonyms, example) VALUES (\'" 
+        const result = await query("INSERT INTO dictionary.word (target, pronunciation, vnMeaning, enMeaning, format, synonyms, example) VALUES (\'" 
         + word.target + "\',\'"+ word.pronunciation + "\',\'" + word.vnMeaning + "\',\'" + word.enMeaning + "\',\'" 
         + word.format + "\',\'" + word.synonyms + "\',\'" + word.example + "\');");
     } catch (err) {
@@ -46,7 +46,7 @@ async function addWord(word) {
  */
 async function deleteWord(target) {
     try {
-        const result = query( "DELETE FROM word WHERE target =\'" + target + "\';" );
+        const result = await query( "DELETE FROM word WHERE target =\'" + target + "\';" );
     } catch (err) {
         throw err;
     }

@@ -10,10 +10,14 @@ exports.getPronunciationView = async (req, res, next) => {
     const target = req.query.target;
     // Nếu có target từ xử lý, ngược lại để lỗi 404
     if (target) {
-        // Lấy spelling đã có từ models
-        const spelling = await pronunciation.getPronunciation(target)
-        // Tạo trang edit pronunciation gửi cho Client
-        res.render('pronunciation', {target, pronunciation: spelling || ""});
+        try {
+            // Lấy spelling đã có từ models
+            const spelling = await pronunciation.getPronunciation(target)
+            // Tạo trang edit pronunciation gửi cho Client
+            if (spelling) res.render('pronunciation', {target, pronunciation: spelling || ""});
+        } catch(err) {
+
+        }
     }
 }
 
@@ -28,9 +32,13 @@ exports.putPronunciation = async (req, res, next) => {
     // Nếu có dữ liệu thì xử lý, ngược lại lỗi 400
     if (target) {
         const spelling = req.body.pronunciation;
-        // Gọi models đặt lại pronunciation
-        await pronunciation.setPronunciation(target, spelling || "");
-        // Điều hướng về view
-        res.sendStatus(200);
+        try {
+            // Gọi models đặt lại pronunciation
+            await pronunciation.setPronunciation(target, spelling || "");
+            // Điều hướng về view
+            res.sendStatus(200);
+        } catch(err) {
+            res.sendStatus(400); 
+        }
     } else res.sendStatus(400);
 }

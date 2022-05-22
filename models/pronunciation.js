@@ -10,8 +10,8 @@ async function getPronunciation(target) {
         Truy vẫn query lấy pronunciation
      */
     try {
-        const result = query ("SELECT pronunciation FROM word WHERE target ='"+ target + "';");
-        return result;
+        const result = await query("SELECT pronunciation FROM word WHERE target ='"+ target + "';");
+        return result[0].pronunciation;
     } catch (err) {
         throw err;
     }
@@ -28,7 +28,7 @@ async function setPronunciation(target, spelling) {
         Truy vẫn query ghi pronunciation
      */
     try {
-        const result = query ("UPDATE word SET pronunciation =\'" + spelling + "\' WHERE target =\'" + target + "\';" );
+        const result = await query ("UPDATE word SET pronunciation =\'" + spelling + "\' WHERE target =\'" + target + "\';" );
     } catch (err) {
         throw err;
     }
