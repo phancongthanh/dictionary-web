@@ -1,3 +1,4 @@
+const Connection = require('mysql/lib/Connection');
 var query = require('../data/query.database');
 
 /**
@@ -20,19 +21,9 @@ async function searchTarget(key) {
  * @returns : word từ cần lấy
  */
 async function getWord(target) {
-    return {
-        target,
-        vnMeaning: "Test1",
-        enMeaning: "Test2",
-        format: "noun",
-        synonyms: "Test4",
-        example: "Test5"
-    }
-    /*
-        Chưa xong,
-        Truy vấn query lấy danh sách nghĩa của từ
-     */
-}
+    const result = await query("SELECT * FROM word WHERE target = \'" + target + "\';");
+    return result[0];
+}  
 
 /**
  * Thêm từ và database
@@ -40,6 +31,13 @@ async function getWord(target) {
  */
 async function addWord(word) {
     /* Chưa code */
+    try {
+        const result = query("INSERT INTO dictionary.word (target, pronunciation, vnMeaning, enMeaning, format, synonyms, example) VALUES (\'" 
+        + word.target + "\',\'"+ word.pronunciation + "\',\'" + word.vnMeaning + "\',\'" + word.enMeaning + "\',\'" 
+        + word.format + "\',\'" + word.synonyms + "\',\'" + word.example + "\');");
+    } catch (err) {
+        throw err;
+    }
 }
 
 /**
@@ -47,7 +45,11 @@ async function addWord(word) {
  * @param string target : Nghĩa tiếng anh của từ
  */
 async function deleteWord(target) {
-    /* Chưa code */
+    try {
+        const result = query( "DELETE FROM word WHERE target =\'" + target + "\';" );
+    } catch (err) {
+        throw err;
+    }
 }
 
 module.exports = {

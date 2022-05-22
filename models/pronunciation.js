@@ -7,9 +7,15 @@ var query = require('../data/query.database');
  */
 async function getPronunciation(target) {
     /*
-        Chưa code
         Truy vẫn query lấy pronunciation
      */
+    try {
+        const result = query ("SELECT pronunciation FROM word WHERE target ='"+ target + "';");
+        return result;
+    } catch (err) {
+        throw err;
+    }
+   
 }
 
 /**
@@ -19,9 +25,13 @@ async function getPronunciation(target) {
  */
 async function setPronunciation(target, spelling) {
     /*
-        Chưa code
         Truy vẫn query ghi pronunciation
      */
+    try {
+        const result = query ("UPDATE word SET pronunciation =\'" + spelling + "\' WHERE target =\'" + target + "\';" );
+    } catch (err) {
+        throw err;
+    }
 }
 
 module.exports = {
