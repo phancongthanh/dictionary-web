@@ -106,3 +106,38 @@ searchButton.addEventListener("click", () => {
         enMean.textContent = "bruhhh";
     }
 });
+async function getword(Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example){
+    console.log({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
+            const url = "/word/search?key=" + POST_target[0];
+            // childs[1].innerText = "Tìm từ";
+            // childs[2].innerText = "GET: " + url;
+
+            const response = await fetch( url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
+            });
+}
+function getClick() {
+    const search=document.getElementById("searchword")
+    const word=document.getElementById("word-out");
+    const pro = document.getElementById("pronunciation-out");
+    const Vn = document.getElementById("vn-out");
+    const En = document.getElementById("en-out");
+    const ex = document.getElementById("example-out");
+    const syn = document.getElementById("synonym-out");
+    const form = document.getElementById("type-out");
+    const sword=search.value;
+    getword(sword,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example)
+    word.textContent=target;
+    pro.textContent=pronunciation;
+    Vn.textContent=vnMeaning;
+    En.textContent=enMeaning;
+    ex.textContent=example;
+    syn.textContent=synonym;
+    form.textContent=format;
+    
+}
+
