@@ -26,7 +26,7 @@ connection.query(selectDatabase, function(err, result) {
   if (err) throw err;
 })
 
-const createWordTable = "CREATE TABLE IF NOT EXISTS word(target VARCHAR(20) NOT NULL, pronunciation VARCHAR(20), vnMeaning VARCHAR(200), enMeaning VARCHAR(200), format VARCHAR(20), synonyms VARCHAR(200), example VARCHAR(200));"
+const createWordTable = "CREATE TABLE IF NOT EXISTS word(target VARCHAR(20) NOT NULL PRIMARY KEY,pronunciation VARCHAR(20),vnMeaning VARCHAR(200),enMeaning VARCHAR(200),format VARCHAR(20),synonyms VARCHAR(200),example VARCHAR(200));"
 
 connection.query(createWordTable, function(err, result) {
   if (err) throw err;

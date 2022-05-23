@@ -33,6 +33,8 @@ exports.getWord = async (req, res, next) => {
 */
 exports.postWord = async (req, res, next) => {
     try {
+        // Gọi models xóa từ cũ
+        await words.deleteWord(req.body.target);
         // Gọi models yêu cầu thêm từ
         await words.addWord(req.body);
         // Kết thúc xử lý
