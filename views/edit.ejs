@@ -39,7 +39,7 @@
         <div class="container">
             <!-- input text  -->
             <div class="body-inputs">
-                <input type="text" class="body-input" placeholder="Searching Your Word">
+                <input type="text" class="body-input" placeholder="Searching Your Word" id="searchword">
                 <div class="dropbox">
                     <li>abcxyz</li>
                     <li>abcxyz</li>
@@ -49,7 +49,7 @@
                     <li>abcxyz</li>
                 </div><br>
                 <!-- button search  -->
-                <button class="search-button">Search</button>
+                <button class="search-button" onclick="getClick()">Search</button>
             </div>
             
         </div>
@@ -68,22 +68,9 @@
                         <input id="pronunInput" type="text" required="" />
                         <label>pronunciation</label>
                     </div>
-                    <div class ="word-type">
-                        <label>word type</label><br>
-                        <select id="wordTypeInput" class="wordTypeDetail">
-                            <option></option>
-                            <option>noun</option>
-                            <option>adjective</option>
-                            <option>adverb</option>
-                            <option>verb</option>
-                            <option>conjunction</option>
-                            <option>pronoun</option>
-                            <option>preposition</option>
-                            <option>determiner</option>
-                            <option>modal verb</option>
-                        </select>
-                            
-                        
+                    <div class="input-container">
+                        <input id="wordTypeInput" type="text" required="" />
+                        <label>Word Type</label>
                     </div>
                     <div class="input-container">
                         <textarea id="vnMeanInput" name="VN-meaning" required=""></textarea>
@@ -103,7 +90,7 @@
                         <label>Synonym</label>
                     </div>
 
-                    <button type="button" class="btn">submit</button>
+                    <button type="button" class="btn" onclick="getSubmit()">submit</button>
                 </form>
 
             </div>

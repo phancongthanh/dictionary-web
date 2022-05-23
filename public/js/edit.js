@@ -9,16 +9,6 @@ menuButton.addEventListener('click', ()=>{
 
 
 
-const editWord =document.getElementById("newWordInput");
-
-editWord.value ="asdasd";
-console.log(editWord.value);
-
-
-const vnMean =document.getElementById("vnMeanInput");
-vnMean.textContent = "asdasd";
-console.log(vnMean.textContent);
-
 // getting all required elements
 const searchWrapper = document.querySelector(".body-inputs");
 const inputBox = searchWrapper.querySelector(".body-input");
@@ -79,3 +69,76 @@ function showSuggestions(list){
     }
     suggBox.innerHTML = listData;
 }
+
+async function getWord(target) {
+    const url = "/word?target=" + target;
+    const response = await fetch(url, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    try {
+        return response.json();
+    } catch(err) {
+        return {
+            target: '',
+            pronunciation: '',
+            vnMeaning: '',
+            enMeaning: '',
+            format: '',
+            synonyms: '',
+            example: ''
+        };
+    }
+}
+
+
+const wordSearch = document.getElementById("searchword");
+const wordFix = document.getElementById("newWordInput");
+const pronunFix = document.getElementById("pronunInput");
+const wordTypeFix = document.getElementById("wordTypeInput");
+const vnMeanFix = document.getElementById("vnMeanInput");
+const enMeanFix = document.getElementById("enMeanInput");
+const exampleFix = document.getElementById("exampleInput");
+const synonymFix = document.getElementById("synonymInput");
+
+
+
+async function getClick() {
+    const ab = wordSearch.value;
+    const returnWord =await getWord(ab);
+    wordFix.value = returnWord.target;
+    pronunFix.value = returnWord.pronunciation;
+    vnMeanFix.value = returnWord.vnMeaning;
+    exampleFix.value = returnWord.example;
+    synonymFix.value = returnWord.synonyms;
+    enMeanFix.value = returnWord.enMeaning;
+    wordTypeFix.value= returnWord.format;
+}
+async function getEdit(target, pronunciation,vnMeaning,enMeaning,format,synonyms,example) {
+    const url = "/word?target=" + target;
+            // const body = JSON.stringify(pronunciation,vnMeaning,enMeaning,format,synonyms,example);
+             await fetch( url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
+            });
+}
+function getSubmit(){
+    
+    const target = wordFix.value;
+    const pronunciation = pronunFix.value;
+    const vnMeaning = vnMeanFix.value;
+    const enMeaning = enMeanFix.value;
+    const example = exampleFix.value;
+    const synonyms = synonymFix.value;
+    const format = wordTypeFix.value;
+    getEdit(target, pronunciation,vnMeaning,enMeaning,format,synonyms,example);
+}
+
+
+
+
+

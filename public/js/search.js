@@ -173,3 +173,26 @@ async function getWord(target) {
 //     synonym.innerText = dataWord.synonyms;
     
 //   })
+async function DeleteWord (target) {
+    const url = "/word?target=" + target;
+     await fetch( url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+}
+async function getDeleteClick() {
+    
+    const key=ab.value;
+    await DeleteWord(key)
+     retWord.textContent="";
+     pro.textContent="";
+      wordType.textContent="";
+    vnMean.textContent = "";
+     enMean.textContent = "";
+      example.textContent ="";
+     synonym.textContent = "";
+
+    
+}
