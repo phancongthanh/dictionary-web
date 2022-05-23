@@ -76,7 +76,7 @@ const vnMean = document.getElementById("vn-out");
 const enMean = document.getElementById("en-out")
 const example = document.getElementById("example-out");
 const synonym = document.getElementById("synonym-out");
-
+const pronunLink = document.getElementById("pronunLink");
 
 // var tempWord = "lmao1";
 // var tempPronunciation = "lmao2";
@@ -153,6 +153,7 @@ async function getWord(target) {
     enMean.textContent = result.enMeaning;
      example.textContent =result.example;
     synonym.textContent = result.synonyms;
+        pronunLink.href = 'http://localhost:3000/pronunciation?target'+'='+key;
     // pro.textContent=key.pronunciation;
     // Vn.textContent=vnMeaning;
     // En.textContent=enMeaning;
