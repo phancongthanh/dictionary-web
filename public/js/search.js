@@ -68,8 +68,9 @@ function showSuggestions(list) {
     suggBox.innerHTML = listData;
 }
 const searchWord = document.querySelector(".body-input");
+const ab=document.getElementById("searchword")
 const retWord = document.getElementById("word-out");
-const pronunciation = document.getElementById("pronunciation-out");
+const pro = document.getElementById("pronunciation-out");
 const wordType = document.getElementById("type-out");
 const vnMean = document.getElementById("vn-out");
 const enMean = document.getElementById("en-out")
@@ -77,67 +78,98 @@ const example = document.getElementById("example-out");
 const synonym = document.getElementById("synonym-out");
 
 
-var tempWord = "lmao1";
-var tempPronunciation = "lmao2";
-var tempWordType = "lmao3";
-var tempVnMean = "lmao4";
-var tempEnMean = "lmao5";
-var tempExample = "lmao6";
-var tempSynonym = "lmao7";
+// var tempWord = "lmao1";
+// var tempPronunciation = "lmao2";
+// var tempWordType = "lmao3";
+// var tempVnMean = "lmao4";
+// var tempEnMean = "lmao5";
+// var tempExample = "lmao6";
+// var tempSynonym = "lmao7";
 
 
 
 const searchButton = document.querySelector(".search-button");
 
-searchButton.addEventListener("click", () => {
-    tempWord = searchWord.value;
-    if (tempWord == "play") {
-        retWord.textContent = tempWord;
-        pronunciation.textContent = tempPronunciation;
-        wordType.textContent = tempWordType;
-        vnMean.textContent = tempVnMean;
-        enMean.textContent = tempEnMean;
-        example.textContent = tempExample;
-        synonym.textContent = tempSynonym;
-    } else {
-        retWord.textContent = "occko";
-        wordType.textContent = "lmao";
-        vnMean.textContent = "bủh";
-        enMean.textContent = "bruhhh";
+// searchButton.addEventListener("click", () => {
+//     tempWord = searchWord.value;
+//     if (tempWord == "play") {
+//         retWord.textContent = tempWord;
+//         pronunciation.textContent = tempPronunciation;
+//         wordType.textContent = tempWordType;
+//         vnMean.textContent = tempVnMean;
+//         enMean.textContent = tempEnMean;
+//         example.textContent = tempExample;
+//         synonym.textContent = tempSynonym;
+//     } else {
+//         retWord.textContent = "occko";
+//         wordType.textContent = "lmao";
+//         vnMean.textContent = "bủh";
+//         enMean.textContent = "bruhhh";
+//     }
+// });
+async function getWord(target) {
+    const url = "/word?target=" + target;
+    const response = await fetch(url, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    try {
+        return response.json();
+    } catch(err) {
+        return {
+            target: '',
+            pronunciation: '',
+            vnMeaning: '',
+            enMeaning: '',
+            format: '',
+            synonyms: '',
+            example: '',
+        };
     }
-});
-async function getword(Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example){
-    console.log({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
-            const url = "/word/search?key=" + POST_target[0];
-            // childs[1].innerText = "Tìm từ";
-            // childs[2].innerText = "GET: " + url;
-
-            const response = await fetch( url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
-            });
 }
-function getClick() {
-    const search=document.getElementById("searchword")
-    const word=document.getElementById("word-out");
-    const pro = document.getElementById("pronunciation-out");
-    const Vn = document.getElementById("vn-out");
-    const En = document.getElementById("en-out");
-    const ex = document.getElementById("example-out");
-    const syn = document.getElementById("synonym-out");
-    const form = document.getElementById("type-out");
-    const sword=search.value;
-    getword(sword,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example)
-    word.textContent=target;
-    pro.textContent=pronunciation;
-    Vn.textContent=vnMeaning;
-    En.textContent=enMeaning;
-    ex.textContent=example;
-    syn.textContent=synonym;
-    form.textContent=format;
+// async function getword(Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example){
+//     console.log({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
+//             const url = "/word/search?key=" + POST_target[0];
+//             // childs[1].innerText = "Tìm từ";
+//             // childs[2].innerText = "GET: " + url;
+
+//             await fetch( url, {
+//                 method: 'GET',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({Search,target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
+//             });
+// }
+ async function getClick() {
+    
+    const key=ab.value;
+    const result=await getWord(key)
+     retWord.textContent=result.target;
+     pro.textContent=result.pronunciation;
+     wordType.textContent=result.format;
+     vnMean.textContent = result.vnMeaning;
+    enMean.textContent = result.enMeaning;
+     example.textContent =result.example;
+    synonym.textContent = result.synonyms;
+    // pro.textContent=key.pronunciation;
+    // Vn.textContent=vnMeaning;
+    // En.textContent=enMeaning;
+    // ex.textContent=example;
+    // syn.textContent=synonym;
+    // form.textContent=format;
     
 }
-
+// searchButton.addEventListener("click", ()=>{
+//     dataWord = getWord(searchword.value);
+//     console.log(dataWord);
+//     retWord.innerText = dataWord.target;
+//     pronunciation.innerText = dataWord.pronunciation;
+//     wordType.innerText= dataWord.format;
+//     vnMean.innerText = dataWord.vnMeaning;
+//     enMean.innerText = dataWord.enMeaning;
+//     example.innerText = dataWord.example;
+//     synonym.innerText = dataWord.synonyms;
+    
+//   })
