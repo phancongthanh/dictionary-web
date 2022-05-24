@@ -14,7 +14,7 @@ exports.getPronunciationView = async (req, res, next) => {
             // Lấy spelling đã có từ models
             const spelling = await pronunciation.getPronunciation(target)
             // Tạo trang edit pronunciation gửi cho Client
-            if (spelling) res.render('pronunciation', {target, pronunciation: spelling || ""});
+            res.render('pronunciation', {target, pronunciation: spelling || ""});
         } catch(err) {
 
         }

@@ -153,7 +153,7 @@ async function getWord(target) {
     enMean.textContent = result.enMeaning;
      example.textContent =result.example;
     synonym.textContent = result.synonyms;
-        pronunLink.href = 'http://localhost:3000/pronunciation?target'+'='+key;
+        pronunLink.href = '/pronunciation?target'+'='+key;
     // pro.textContent=key.pronunciation;
     // Vn.textContent=vnMeaning;
     // En.textContent=enMeaning;

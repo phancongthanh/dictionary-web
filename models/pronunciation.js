@@ -13,7 +13,7 @@ async function getPronunciation(target) {
         const result = await query("SELECT pronunciation FROM word WHERE target ='"+ target + "';");
         return result[0].pronunciation;
     } catch (err) {
-        throw err;
+        return "";
     }
    
 }
@@ -30,7 +30,6 @@ async function setPronunciation(target, spelling) {
     try {
         const result = await query ("UPDATE word SET pronunciation =\'" + spelling + "\' WHERE target =\'" + target + "\';" );
     } catch (err) {
-        throw err;
     }
 }
 
