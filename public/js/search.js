@@ -144,7 +144,7 @@ async function getWord(target) {
 // }
  async function getClick() {
     
-    const key=ab.value;
+    const key=ab.value.toLocaleLowerCase();
     const result=await getWord(key)
      retWord.textContent=result.target;
      pro.textContent=result.pronunciation;
