@@ -54,7 +54,7 @@ async function addWord(target, pronunciation,vnMeaning,enMeaning,format,synonyms
         
         body: JSON.stringify({target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
     });
-    location.assign('/view');
+    //location.assign('/view');
 }
 function saveClick() {
     const word=document.getElementById("newWordInput");
@@ -72,6 +72,7 @@ function saveClick() {
     const example = ex.value;
     const synonyms = syn.value;
     const format = form.value;
-    addWord(target, pronunciation,vnMeaning,enMeaning,format,synonyms,example)
+    addWord(target, pronunciation,vnMeaning,enMeaning,format,synonyms,example);
+    alert("SUCCESS!")
 }
 

@@ -125,7 +125,7 @@ async function getEdit(target, pronunciation,vnMeaning,enMeaning,format,synonyms
                 },
                 body: JSON.stringify({target, pronunciation,vnMeaning,enMeaning,format,synonyms,example})
             });
-            location.assign('/view');
+            //location.assign('/view');
 }
 function getSubmit(){
     
@@ -137,6 +137,7 @@ function getSubmit(){
     const synonyms = synonymFix.value;
     const format = wordTypeFix.value;
     getEdit(target, pronunciation,vnMeaning,enMeaning,format,synonyms,example);
+    alert("SUCCESS!")
 }
 
 
